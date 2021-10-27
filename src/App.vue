@@ -1,23 +1,20 @@
 <template>
   <div>
       <h1>Project components</h1>
-      <buton 
-      :text="btnText" 
-      :btnHeight="100" 
-      :btnWidth="190"
-      :dark="darkmode"
-      @eventEmited="alertMethod( )"
-      >
-        <p><font-awesome-icon icon="coffee" /></p>
-      </buton>
+      <btn 
+        :text="btnText" 
+        :btn-height="100" 
+        :btn-width="190"
+        :dark="darkmode"
+        @click="alertMethod( )">
+        <p slot="left-inside"><font-awesome-icon icon="coffee" /></p>
+        <p slot="right-inside">right slot</p>
+      </btn>
   </div>
 </template>
 
-
 <script>
-
 import Button from './Button.vue'
-
 
 export default {
   data( ) {
@@ -27,7 +24,7 @@ export default {
     }
   },  
   components: {
-    buton: Button
+    btn: Button
   },
   methods: {
     alertMethod( ) {
@@ -37,6 +34,3 @@ export default {
 }
 </script>
 
-<style >
- 
-</style>
