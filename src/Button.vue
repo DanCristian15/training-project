@@ -1,61 +1,58 @@
 <template>
-<div>
-<button 
-:style="{ 'height': btnHeight + 'px', 'width': btnWidth + 'px' }"
-:class='!dark ? "lightmode" : "darkmode" '
-@click="eventEmit"
->
-  <slot></slot><p> {{text}} </p><slot></slot>
-</button>
-</div>
-
+    <div>
+        <button 
+            :style="{ 'height': btnHeight + 'px', 'width': btnWidth + 'px' }"
+            :class= '!dark ? "lightmode" : "darkmode" '
+            @click="onClickHandler">
+            <slot name="left-inside"></slot><p> {{text}} </p><slot name="right-inside"></slot>
+        </button>
+    </div>
 </template>
 
 <script>
-
-
-
-export default { 
-    props: {
-        text: {
-            type: String,
-            require: true
+    export default { 
+        props: {
+            text: {
+                type: String,
+                required: true,
+                default: 'clcik'
+            },
+            btnHeight: {
+                type: Number,
+                default: 20
+            },
+            btnWidth: {
+                type: Number,
+                default: 100
+            },
+            dark: {
+                type: Boolean,
+                default: true
+            }
         },
-        btnHeight: {
-            default: 20
-        },
-        btnWidth: {
-            default: 100
-        },
-        dark: {
-            type: Boolean
+        methods: {
+        onClickHandler( ) {
+            this.$emit( 'click' , {
+                alertmessage: 'mesaj'
+            })
         }
-    },
-    methods: {
-       eventEmit( ) {
-           this.$emit( 'eventEmited' , {
-               alertmessage: 'mesaj'
-           })
-       }
+        }
     }
-}
 </script>
+
 <style scoped>
+    .darkmode {
+        background-color: black;
+        color: white;
+    }
 
-.darkmode {
-    background-color: black;
-    color: white;
-}
+    .lightmode {
+        background-color: rgb(255, 255, 255);
+        color: black;
+    }
 
-.lightmode {
-    background-color: rgb(255, 255, 255);
-    color: black;
-}
-
-p {
-    display: inline-block;
-    margin: 5px;
-}
-
-
+    p {
+        display: inline-block;
+        margin: 5px;
+    }
 </style>
