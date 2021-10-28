@@ -32,9 +32,7 @@
         },
         methods: {
         onClickHandler( ) {
-            this.$emit( 'click' , {
-                alertmessage: 'mesaj'
-            })
+            this.$emit( 'click' );
         }
         }
     }
