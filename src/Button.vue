@@ -2,7 +2,16 @@
     <div>
         <button 
             :style="{ 'height': btnHeight + 'px', 'width': btnWidth + 'px' }"
-            :class= '!dark ? "lightmode" : "darkmode" '
+            class="btn"
+            :class= '!dark ? "light" : "dark" '
+            @click="onClickHandler">
+            <slot name="left-inside"></slot><p> {{text}} </p><slot name="right-inside"></slot>
+        </button>
+
+         <button 
+            :style="{ 'height': btnHeight + 'px', 'width': btnWidth + 'px' }"
+            class="btn"
+            :class= '!dark ? "light" : "darkblue" '
             @click="onClickHandler">
             <slot name="left-inside"></slot><p> {{text}} </p><slot name="right-inside"></slot>
         </button>
@@ -28,26 +37,42 @@
             dark: {
                 type: Boolean,
                 default: true
+            },
+            darkblue: {
+                type: Boolean,
+                default: true
             }
         },
         methods: {
-        onClickHandler( ) {
-            this.$emit( 'click' );
-        }
+            onClickHandler( ) {
+                this.$emit( 'click' );
+            }
         }
     }
 </script>
 
 <style scoped>
-    .darkmode {
+
+    .btn {
+        background-color: rgb(255, 255, 255);
+        color: black;
+    }
+
+    .btn.dark {
         background-color: black;
         color: white;
     }
 
-    .lightmode {
+    .btn.darkblue {
+        background-color: blue;
+        color: white;
+    }
+
+   
+    /* .light {
         background-color: rgb(255, 255, 255);
         color: black;
-    }
+    } */
 
     p {
         display: inline-block;

@@ -5,7 +5,7 @@
         :text="btnText" 
         :btn-height="100" 
         :btn-width="190"
-        :dark="darkmode"
+        :dark="dark"
         @click="alertMethod( )">
         <p slot="left-inside"><font-awesome-icon icon="coffee" /></p>
         <p slot="right-inside">right slot</p>
@@ -20,7 +20,7 @@ export default {
   data( ) {
     return {
       btnText: "click me",
-      darkmode: true
+      dark: true
     }
   },  
   components: {
@@ -33,4 +33,5 @@ export default {
   }
 }
 </script>
-
+<style>
+</style>
