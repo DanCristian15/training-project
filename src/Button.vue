@@ -1,20 +1,12 @@
 <template>
     <div>
-        <button 
+            <button 
             :style="{ 'height': btnHeight + 'px', 'width': btnWidth + 'px' }"
             class="btn"
             :class= '!dark ? "light" : "dark" '
             @click="onClickHandler">
             <slot name="left-inside"></slot><p> {{text}} </p><slot name="right-inside"></slot>
-        </button>
-
-         <button 
-            :style="{ 'height': btnHeight + 'px', 'width': btnWidth + 'px' }"
-            class="btn"
-            :class= '!dark ? "light" : "darkblue" '
-            @click="onClickHandler">
-            <slot name="left-inside"></slot><p> {{text}} </p><slot name="right-inside"></slot>
-        </button>
+            </button>
     </div>
 </template>
 
@@ -63,12 +55,6 @@
         color: white;
     }
 
-    .btn.darkblue {
-        background-color: blue;
-        color: white;
-    }
-
-   
     /* .light {
         background-color: rgb(255, 255, 255);
         color: black;
