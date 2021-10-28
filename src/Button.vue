@@ -1,9 +1,10 @@
 <template>
     <div>
         <button 
-            :style="{ 'height': btnHeight + 'px', 'width': btnWidth + 'px' }"
-            :class= '!dark ? "lightmode" : "darkmode" '
-            @click="onClickHandler">
+        :style="{ 'height': btnHeight + 'px', 'width': btnWidth + 'px' }"
+        class="btn"
+        :class= '!dark ? "light" : "dark" '
+        @click="onClickHandler">
             <slot name="left-inside"></slot><p> {{text}} </p><slot name="right-inside"></slot>
         </button>
     </div>
@@ -41,15 +42,21 @@
 </script>
 
 <style scoped>
-    .darkmode {
+
+    .btn {
+        background-color: rgb(255, 255, 255);
+        color: black;
+    }
+
+    .btn.dark {
         background-color: black;
         color: white;
     }
 
-    .lightmode {
+    /* .light {
         background-color: rgb(255, 255, 255);
         color: black;
-    }
+    } */
 
     p {
         display: inline-block;
