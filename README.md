@@ -1,4 +1,4 @@
-# components-project-2
+# training-project
 
 > A Vue.js project
 
