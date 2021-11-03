@@ -1,27 +1,27 @@
 <template>
-    <div class="item">
-        <p><strong> Name: {{ record.name  }} </strong></p>
-        <p> Number: {{ record.number }} </p>
-        <p> Date: {{ record.date | formatDate( record.date ) }} </p>
-        <p> Height: {{ record.height | formatHeight( record.height) }} </p>
-        <div class="item-image__div">
-            <p>Image: </p>
-            <img :src=" record.image " alt="image">
-        </div>
+    <div v-if="record" class="item">
+            <p><strong> Name: {{ record.name  }} </strong></p>
+            <p> Number: {{ record.number }} </p>
+            <p> Date: {{ record.date | formatDate( record.date ) }} </p>
+            <p> Height: {{ record.height | formatHeight( record.height) }} </p>
+            <div class="item-image__div">
+                <p>Image: </p>
+                <img :src=" record.image " alt="image">
+            </div>
     </div>
 </template>
 
 <script>
+
     import { mapGetters } from 'vuex'
 
     export default {
        data() {
            return {
-               record: null
+               record: null,
            }
        },
        created() {
-           
            this.record = this.findRecordById( this.itemId );
            if( !this.record ) {
                this.$router.push( { name: 'ItemsList' } ).catch( ( ) => { } );
@@ -33,9 +33,8 @@
            } ),
            itemId() {
                return parseInt( this.$route.params.itemId );
-           }
+           },
        },
-
        filters: {
             formatDate(value) {
                 let fullDate = value;
